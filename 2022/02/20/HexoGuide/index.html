@@ -58,7 +58,7 @@
 <meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step9-1.png">
 <meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step9-2.png">
 <meta property="article:published_time" content="2022-02-20T05:02:33.000Z">
-<meta property="article:modified_time" content="2022-02-20T11:28:36.504Z">
+<meta property="article:modified_time" content="2022-02-20T11:47:52.106Z">
 <meta property="article:author" content="Kyo">
 <meta property="article:tag" content="Tutorial">
 <meta property="article:tag" content="Hexo">
@@ -214,7 +214,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      43 Min
+      45 Min
     </span>
   
 
@@ -301,6 +301,7 @@
 </li>
 <li><p>打开你已经安装的Shell</p>
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
+
 <p>在Shell输入<code>cd D:\Huoshao.github.io</code>,这里的地址替换成你自己文件夹的地址</p>
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step1-2.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 </li>
@@ -324,6 +325,7 @@
 </li>
 <li><p>打开你的个人网站所在文件夹</p>
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step2-3.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
+
 <p>这时候你会发现，基础的网站文件已经在文件夹中安装好了</p>
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step2-3_2.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class=""></li>
 </ol>
@@ -367,6 +369,7 @@
 </li>
 <li><p>点击publish repository提交仓库到Github（上传网盘）</p>
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-4.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
+
 <p>注意！项目名称一定是<code>你的Github用户名.github.io</code>，并且不要勾选<code>Keep this code private</code></p>
  <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-4_2.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class=""></li>
 </ol>
@@ -378,6 +381,7 @@
 <ol>
 <li><p>搜索自己心怡的域名，根据自己的财力买下</p>
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step6-1.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
+
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step6-2.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 </li>
 <li><p>购买完后，自己购买的域名进入manager页面</p>
@@ -434,11 +438,13 @@
 <p>注意1：github的布署不是及时生效的，需要等一段时间才能反应你的修改。如果你查看自己的修改，在本地服务器上看就行（用<code>hexo s</code>命令在<code>localhost:4000</code>上看）</p>
 <p>注意2：在生成页面前，最好都用 <code>hexo clean</code>命令清除本地缓存</p>
 <hr>
-<h3 id="网站制作：第二步，安装必要Hexo插件"><a href="#网站制作：第二步，安装必要Hexo插件" class="headerlink" title="网站制作：第二步，安装必要Hexo插件"></a>网站制作：第二步，安装必要Hexo插件</h3><ol>
+<h3 id="网站制作：第二步，安装Hexo插件和设置配置文件"><a href="#网站制作：第二步，安装Hexo插件和设置配置文件" class="headerlink" title="网站制作：第二步，安装Hexo插件和设置配置文件"></a>网站制作：第二步，安装Hexo插件和设置配置文件</h3><ol>
 <li><p>图片显示插件<br>① 在Shell中输入<code>npm install hexo-image-link --save</code>安装图片显示插件<br>② 在VSCode中，修改_config.yml文件中的<code>post_asset_folder: true</code>（找不到的话，在VSCode中按<code>Ctrl+ F</code>搜索<code>post_asset_folder</code>）<br>③ 完成的话，每次新建页面时，都会在_posts文件夹下新建页面的同名文件夹，把文章中想插入的图片都保存在这个文件夹里，就能在正文引用了</p>
 </li>
 <li><p>永久链接及版权声明插件<br>在Shell中输入<code>npm install hexo-addlink --save</code>安装插件</p>
 </li>
+<li><p>渲染器插件<br>在Shell中输入<code>npm install hexo-renderer-marked</code>安装插件<br>在VSCode中，在_config.yml文件最后添加以下代码：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">marked:</span><br>   <span class="hljs-attr">prependRoot:</span> <span class="hljs-literal">true</span><br>   <span class="hljs-attr">postAsset:</span> <span class="hljs-literal">true</span><br>   <span class="hljs-attr">xhtmlOut:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 不必必使用完全的 XHTML 代码，换行可以为 &lt;br&gt;</span><br>   <span class="hljs-attr">breaks:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 每次回车换行相当于一个 &lt;br/&gt; 标签</span><br></code></pre></div></td></tr></table></figure></li>
 </ol>
 <hr>
 <h3 id="网站制作：第三步，安装主题"><a href="#网站制作：第三步，安装主题" class="headerlink" title="网站制作：第三步，安装主题"></a>网站制作：第三步，安装主题</h3><p>Hexo的网页制作除了简洁优美外，还因为丰富的主题而知名。你可以选择自己喜欢的主题安装。可以在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官方网站</a>上看到大家开发的主题。</p>
@@ -471,6 +477,7 @@
 <p>Hexo的文章基于Markdown书写，书写规则可以在<a target="_blank" rel="noopener" href="https://www.appinn.com/markdown/#%E9%93%BE%E6%8E%A5">帮助文档</a>中查看。</p>
 <p>因为我们在VSCode中已经安装了Markdown插件，你可以直接在VSVode中浏览书写结果</p>
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step9-1.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
+
 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step9-2.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <hr>
