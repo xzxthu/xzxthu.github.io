@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/xzxthu.github.io/img/icon.png">
+  <link rel="icon" href="/xzxthu.github.io/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kyo">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="个人网站是伪需求吗？艺术生或者艺术工作者大多会想要个人网站，用来讲解自己的艺术创作理念、展示作品集、介绍艺术家简历等等。 不过随着社交媒体的发展、流量垄断和信息茧房的产生，个人网站原本的功能性已经被极大地削弱了。 不仅缺少及时性和互动性，而且也缺少引流——个人网站更趋近于链接着“名片”的后台。 加上2020年3月1日开始执行的《网络信息内容生态治理规定》，个人网站已经几乎完全失去了媒体属性。艺术社">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Hexo的个人网站搭建教程 A Tutorial for Personal Website Base on Hexo">
+<meta property="og:url" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/index.html">
+<meta property="og:site_name" content="Huoshao Art">
+<meta property="og:description" content="个人网站是伪需求吗？艺术生或者艺术工作者大多会想要个人网站，用来讲解自己的艺术创作理念、展示作品集、介绍艺术家简历等等。 不过随着社交媒体的发展、流量垄断和信息茧房的产生，个人网站原本的功能性已经被极大地削弱了。 不仅缺少及时性和互动性，而且也缺少引流——个人网站更趋近于链接着“名片”的后台。 加上2020年3月1日开始执行的《网络信息内容生态治理规定》，个人网站已经几乎完全失去了媒体属性。艺术社">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step1-2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step1-4.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/VSCodeIcon.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step2-2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step2-3.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step2-3_2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step3-1.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step3-4.jpg">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step3-5.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step3-5_2.jpg">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/GithubDeskIcon.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step4-2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step4-3.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step4-4.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step4-4_2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step6-1.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step6-2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step6-3.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step6-4.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step4-5_1.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step4-5_2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step4-5_3.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step7-1.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step7-2.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step7-3.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step7-4.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/VSCodeIcon.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step7-5.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step8-1.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step9-1.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/Step9-2.png">
+<meta property="article:published_time" content="2022-02-20T05:02:33.000Z">
+<meta property="article:modified_time" content="2022-02-20T09:24:04.043Z">
+<meta property="article:author" content="Kyo">
+<meta property="article:tag" content="Tutorial">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://xzxthu.github.io/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png">
+  
+  
+  <title>基于Hexo的个人网站搭建教程 A Tutorial for Personal Website Base on Hexo - Huoshao Art</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/xzxthu.github.io/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"xzxthu.github.io","root":"/xzxthu.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xzxthu.github.io/local-search.xml"};
+  </script>
+  <script  src="/xzxthu.github.io/js/utils.js" ></script>
+  <script  src="/xzxthu.github.io/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 40vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/xzxthu.github.io/">
+      <strong>Huoshao Art</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xzxthu.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xzxthu.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xzxthu.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/xzxthu.github.io/img/banner_page_1.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="基于Hexo的个人网站搭建教程 A Tutorial for Personal Website Base on Hexo">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-20 14:02" pubdate>
+        February 20, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43 Min
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基于Hexo的个人网站搭建教程 A Tutorial for Personal Website Base on Hexo</h1>
+            
+            <div class="markdown-body">
+              <h4 id="个人网站是伪需求吗？"><a href="#个人网站是伪需求吗？" class="headerlink" title="个人网站是伪需求吗？"></a>个人网站是伪需求吗？</h4><p>艺术生或者艺术工作者大多会想要个人网站，用来讲解自己的艺术创作理念、展示作品集、介绍艺术家简历等等。</p>
+<p>不过随着社交媒体的发展、流量垄断和信息茧房的产生，个人网站原本的功能性已经被极大地削弱了。</p>
+<p>不仅缺少及时性和互动性，而且也缺少引流——个人网站更趋近于<strong>链接着“名片”的后台</strong>。</p>
+<p>加上2020年3月1日开始执行的《网络信息内容生态治理规定》，个人网站已经几乎完全失去了媒体属性。艺术社团的网站也近乎被公众号等社交媒体公众账号所取代。个人网站已经不得不变成单向而静态的内容站。</p>
+<p>而个人网站的搭建门槛高——比成熟的网络社交媒体（微博、公众号、ins）高得多。不仅需要基础的互联网工程知识，还需要用户体验和平面设计的知识，后期还需要长期维护。并且，个人网站的内容也会大量复制创作者在其它平台的内容。个人网站就似乎没有依托其它平台建立的理由了，唯一能体现其商业价值的，也就只有<strong>域名</strong>本身。</p>
+<p>那么，个人网站是伪需求吗？</p>
+<p>笔者认为，个人网站当前存在的意义，更接近于<strong>信息孤岛</strong>：</p>
+<ul>
+<li><p>个人网站可以给予人的日常学以实践的空间，从而成为一种抵抗外界意识、拒绝自我意识瓦解的手段。</p>
+</li>
+<li><p>个人网站基于自身的物理壁垒，要么避免自己导向目前的舆论战环境、要么加速这个过程。</p>
+</li>
+</ul>
+<p>在当下这个以蜂群为单位的文化战争中，个体的自我思考过程本身，比思考的内容更显得珍贵。</p>
+<p>另外，一个以自我名称的符号为映射入口的对象，可以让主体产生实体错觉——这就是创建个人网站的快感——</p>
+<p>哪个程序员不想做技术博客呢？</p>
+<p>但这个时代，快感总是很贵的。</p>
+<p>免费的快感最贵。</p>
+<p>此外，“个人网站”的重音并不在“个人”，而是在“网站”。这是互联网时代的搭台唱戏。有什么比自己搭台自己唱戏更能吸引艺术家们呢？</p>
+<p>因此，笔者分享一套基于Hexo + Github的个人网站搭建方法，可谓门槛低、性价比高，让读者可以建立属于自己的个人网站。</p>
+<p>注意：Hexo + Github的个人网站只能满足静态网页的需求，即文字、图片、视频展示，以及不大的交互。</p>
+<p>如果艺术家想要更复杂的交互效果，还是自己从头搭建网站更合适。</p>
+<hr>
+<h4 id="基础准备"><a href="#基础准备" class="headerlink" title="基础准备"></a>基础准备</h4><p>制作一个像本站一样的个人网站，你需要准备：</p>
+<p>（*建议都安装最新稳定版本）</p>
+<ol>
+<li>注册Github → <a target="_blank" rel="noopener" href="https://github.com/">Github</a></li>
+<li>安装Git → <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git下载链接</a></li>
+<li>安装Github Desktop  → <a target="_blank" rel="noopener" href="https://desktop.github.com/">Github Desktop下载链接</a></li>
+<li>安装Node.js → <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js下载链接</a><br>注意：一些主题并不支持高版本的Node,可以下载<a target="_blank" rel="noopener" href="https://nodejs.org/download/release/v12.14.1/node-v12.14.1-x64.msi">12.14版本</a></li>
+<li>安装Shell  → <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2">Shell下载链接</a></li>
+<li>安装VSCode → <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode下载链接</a></li>
+</ol>
+<hr>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>Hexo是一款基于Node.js的静态博客框架，如果需要部分后台，也可以用hexo-admin的插件来实现。此教程只说建立静态网站的部分。</p>
+<p>安装Hexo，你需要：</p>
+<ol>
+<li><p>新建文件夹，这个是你的个人网站所有内容和代码存放的地方。<br> 注意！ 地址不要带有中文<br> 注意!! Win11会自动注释“桌面”地址为中文，所以也不要把这个文件夹放在桌面。你可以放在例如：<code>D:\Huoshao.github.io</code>，其中的<code>Huoshao</code>替换为你自己的Github注册的<strong>用户名</strong></p>
+</li>
+<li><p>打开你已经安装的Shell</p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<p>在Shell输入<code>cd D:\Huoshao.github.io</code>,这里的地址替换成你自己文件夹的地址</p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step1-2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li><p>继续在Shell中输入Hexo安装命令：<br> <code>npm install -g hexo-cli</code></p>
+</li>
+<li><p>继续在Shell中输入网站初始化命令：<br><code>hexo init</code><br>等待几分钟后，你的网站以及在本地建立完成了！（国内可能链接github较慢导致下载速度慢，可以挂全局模式的VPN）</p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step1-4.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+</ol>
+<hr>
+<h4 id="使用VSCode"><a href="#使用VSCode" class="headerlink" title="使用VSCode"></a>使用VSCode</h4><p>VSCode是你设计网站、添加网站主要内容的地方。</p>
+<p>使用VSCode，你需要：</p>
+<ol>
+<li>打开你已经安装的VSCode <img src="/xzxthu.github.io/2022/02/20/HexoGuide/VSCodeIcon.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>点击下图①位置，在搜索框输入“Markdown”，安装箭头所指②和③两个插件<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step2-2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>打开你的个人网站所在文件夹<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step2-3.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+这时候你会发现，基础的网站文件已经在文件夹中安装好了<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step2-3_2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+</ol>
+<hr>
+<h4 id="初始化Git和Github-Desktop"><a href="#初始化Git和Github-Desktop" class="headerlink" title="初始化Git和Github Desktop"></a>初始化Git和Github Desktop</h4><p>Git是一个版本管理工具，你可以实现比Ctrl+S更高级的保存（跟着我念：“三步一保存，一生不流泪”）。</p>
+<p>如果你想了解更多，可以看廖雪峰老师的教程: <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">抱廖雪峰学Git</a></p>
+<p>Github是<del>全球最大同性交友网站</del>Git的远程托管仓库，理解为多人免费大型网盘就行。</p>
+<p>我们的网站就是依托Github的Github Pages功能部署的。因此需要你的文件夹名称为：<code>你的Github用户名.github.io</code></p>
+<p>初始化Git，你需要：</p>
+<ol>
+<li>打开Git Bush<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step3-1.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>在Git Bush里输入<br> <code>git config --global user.name &quot;你的GitHub用户名&quot;</code><br> <code>git config --global user.email &quot;你的GitHub注册邮箱&quot;</code></li>
+<li>在Git Bush里输入<br><code>ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</code><br>然后<strong>直接三个回车即可，默认不需要设置密码</strong></li>
+<li>找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制，<strong>注意保护</strong>好你的ssh，这个和你的密码是一个等级的东西！<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step3-4.jpg" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>打开你的<a target="_blank" rel="noopener" href="https://github.com/settings/keys">GitHub_Settings_keys</a> 页面，新建new SSH Key<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step3-5.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>填写SHH key，Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step3-5_2.jpg" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>打开Git Bush，输入<code>cd D:\Huoshao.github.io</code>，即你的网站代码地址</li>
+<li>打开Git Bush，输入<code>git init</code><br>成功后，你的文件夹里将多出一个隐藏的“git文件夹”</li>
+</ol>
+<p>接下来，初始化你的Github:</p>
+<ol>
+<li>打开Github Desktop<img src="/xzxthu.github.io/2022/02/20/HexoGuide/GithubDeskIcon.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>添加你的网站问价夹（即添加仓库）<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>在Summary中填写信息，一般写到此为止干了什么，你可以写“Hexo Init”。然后按Commit to master提交<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-3.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>点击publish repository提交仓库到Github（上传网盘）<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-4.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+注意！项目名称一定是<code>你的Github用户名.github.io</code>，并且不要勾选<code>Keep this code private</code> <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-4_2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+</ol>
+<p>到现在，你已经基本配置完了所有基础工具了，接下来就是令人激动的时刻！！</p>
+<hr>
+<h4 id="注册域名"><a href="#注册域名" class="headerlink" title="注册域名"></a>注册域名</h4><p>我使用的是<a target="_blank" rel="noopener" href="https://www.namecheap.com/">namecheap</a>购买的域名，你也可以在阿里云或者亚马逊买，貌似百度也能买（不过风评待定）。</p>
+<p>注意：因为个人网站的备案很难，如果买虚拟服务器的话最好买海外的。</p>
+<p>在namecheap上买域名，你需要：</p>
+<ol>
+<li>搜索自己心怡的域名，根据自己的财力买下<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step6-1.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step6-2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>购买完后，自己购买的域名进入manager页面<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step6-3.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>打开你的Shell,输入<code>ping 你的Github用户名.github.io</code>，获得你的Github Pages的IP地址 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>设置DNS：删除掉所有原来的Host Record，并添加3个新的，如图：<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step6-4.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+ 第一个：A Record，Host使用@，将上一步得到的地址输入到Value中<br> 第二个：A Record，Host使用www，将上一步得到的地址输入到Value中<br> 第三个：CNAME RECORD，Host使用www，Value使用<code>你的Github用户名.github.io</code></li>
+<li>打开你的Github的仓库，进入Setting界面<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-5_1.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>拉到最底下，进入Github Pages设置 <img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-5_2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>将你买的自定义域名填进去<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step4-5_3.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+</ol>
+<p>域名和基础工具都搞定了，接下来就可以开始做网站了！</p>
+<hr>
+<h4 id="网站制作：第一步，基础操作"><a href="#网站制作：第一步，基础操作" class="headerlink" title="网站制作：第一步，基础操作"></a>网站制作：第一步，基础操作</h4><p>打开你的Shell</p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/PowerShellIcon.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>依次输入：清理缓存、生成页面、本地服务器（测试用）三行命令<br><code>hexo clean</code><br><code>hexo g</code><br><code>hexo s</code></p>
+<p>此时，你的Shell界面会提示，网站已经在本地运行了！<br>打开浏览器，访问<code>localhost:4000</code>，就可以看见你最基础的网站了</p>
+<p>上面三条命令将是你未来最经常用的命令，可以快速地在自己的电脑上看到运行</p>
+<p>但这时候，网站是空空如也的，你还需要一些步骤，将本地的网页布署到Github上：</p>
+<p>在Shell中按下<code>Ctrl+ C</code>停止网页的本地服务</p>
+<p>在Shell中依次输入：清理缓存、生成页面、网页布署三行命令<br><code>hexo clean</code><br><code>hexo g</code><br><code>hexo d</code></p>
+<p>如果不出意外，那么应该就是出意外了——布署失败——因为现在Github仅支持通过token布署</p>
+<p>打开Github网站，在个人设置页面，找到<code>Setting</code></p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step7-1.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>选择开发者设置<code>Developer setting</code></p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step7-2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>选择个人访问令牌<code>Personal access tokens</code>，然后选中生成令牌<code>Generate new token</code></p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step7-3.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>设置token的有效期，访问权限等。选择要授予此令牌token的范围或权限，要使用token从命令行访问仓库，请选择<code>repo</code>，然后生成token即可</p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step7-4.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>注意！！！！<br>生成的token要及时复制和保存，因为刷新网页的话就不能看到了。<strong>注意保护</strong>好你的token，这个和你的密码是一个等级的东西！</p>
+<p>最后，打开你的VSCode</p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/VSCodeIcon.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>将_config.yml文件中的<code>deploy</code>下的<code>repo</code>改成<code>你的token@github.com/你的用户名/你的用户名.github.io.git</code></p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step7-5.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>再次在Shell中执行：清理缓存、生成页面、网页布署三行命令<br><code>hexo clean</code><br><code>hexo g</code><br><code>hexo d</code></p>
+<p>之后，在浏览器中输入你注册的域名，或者<code>你的用户名.github.io</code>，就能看到你的个人网站了！</p>
+<p>注意1：github的布署不是及时生效的，需要等一段时间才能反应你的修改。如果你查看自己的修改，在本地服务器上看就行（用<code>hexo s</code>命令在<code>localhost:4000</code>上看）</p>
+<p>注意2：在生成页面前，最好都用 <code>hexo clean</code>命令清除本地缓存</p>
+<hr>
+<h4 id="网站制作：第二步，安装必要Hexo插件"><a href="#网站制作：第二步，安装必要Hexo插件" class="headerlink" title="网站制作：第二步，安装必要Hexo插件"></a>网站制作：第二步，安装必要Hexo插件</h4><ol>
+<li><p>图片显示插件<br>① 在Shell中输入<code>npm install hexo-image-link --save</code>安装图片显示插件<br>② 在VSCode中，修改_config.yml文件中的<code>post_asset_folder: true</code>（找不到的话，在VSCode中按<code>Ctrl+ F</code>搜索<code>post_asset_folder</code>）<br>③ 完成的话，每次新建页面时，都会在_posts文件夹下新建页面的同名文件夹，把文章中想插入的图片都保存在这个文件夹里，就能在正文引用了</p>
+</li>
+<li><p>永久链接及版权声明插件<br>在Shell中输入<code>npm install hexo-addlink --save</code>安装插件</p>
+</li>
+</ol>
+<hr>
+<h4 id="网站制作：第三步，安装主题"><a href="#网站制作：第三步，安装主题" class="headerlink" title="网站制作：第三步，安装主题"></a>网站制作：第三步，安装主题</h4><p>Hexo的网页制作除了简洁优美外，还因为丰富的主题而知名。你可以选择自己喜欢的主题安装。可以在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官方网站</a>上看到大家开发的主题。</p>
+<p>github上star数最多的主题是<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">Next主题</a>。</p>
+<p>本站使用的是<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid主题</a>，后续开发教程也会基于这个主题</p>
+<p>安装Fluid主题也很简单：<br>① 在Shell中输入<code>npm install --save hexo-theme-fluid</code>安装主题<br>② 在根目录下创建_config.fluid.yml文件，将主题的<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml</a> 内容复制进去<br>③ 修改_config.yml文件中的<code>theme: fluid</code>，将主题改为fluid</p>
+<hr>
+<h4 id="网站制作：第四步，主题详细设置案例"><a href="#网站制作：第四步，主题详细设置案例" class="headerlink" title="网站制作：第四步，主题详细设置案例"></a>网站制作：第四步，主题详细设置案例</h4><p>本网站基于<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid主题</a>的教程，详细请看<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">官方文档</a>。</p>
+<p>所有主题相关的设置都在_config.fluid.yml文件中，如果我们想更换主题的头图，需要：</p>
+<ol>
+<li>在本地的<code>source</code>文件夹中，新建名为<code>img</code>的文件夹</li>
+<li>想需要替换的头图图片文件，放在这个新的<code>img</code>的文件夹中</li>
+<li>将config.fluid.yml文件中的<code>banner_img</code>修改为你的文件<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step8-1.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class=""></li>
+<li>注意，冒号后面要有空格</li>
+</ol>
+<p>这样，就可以更换头图了。</p>
+<p>根据<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">官方文档</a>中的引导，你可以详细设置自己的网页效果。</p>
+<p>如果觉得这个主题不合适，也可以选择其它的主题。</p>
+<hr>
+<h4 id="网站制作：第五步，写文章"><a href="#网站制作：第五步，写文章" class="headerlink" title="网站制作：第五步，写文章"></a>网站制作：第五步，写文章</h4><p>新建一个新文章很简答，在Shell中输入：<br><code>hexo n &quot;新文章&quot;</code></p>
+<p>在_posts文件夹中会出现一个<code>新文章.md</code>的文件，这时候用VSCode中就可以直接编辑这个md文件，从而得到你的文章网页</p>
+<p>Hexo的文章基于Markdown书写，书写规则可以在<a target="_blank" rel="noopener" href="https://www.appinn.com/markdown/#%E9%93%BE%E6%8E%A5">帮助文档</a>中查看。</p>
+<p>因为我们在VSCode中已经安装了Markdown插件，你可以直接在VSVode中浏览书写结果</p>
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step9-1.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2022/02/20/HexoGuide/Step9-2.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<hr>
+<h4 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h4><p>之前在知乎上看到一个很有意思的说法，个人网站是“生平纪念网”。</p>
+<p>我们喜欢教“赢”的教育，殊不知，人的天性中的“赢”，是一种思维结构，根本不需要“教育”。</p>
+<p>但赢和输两段回忆，就像自此分支的两个平行宇宙，一个是往后骄傲的底气，一个可能是终生的负担和遗憾。</p>
+<p>如果人生有存档点多好啊——</p>
+<p>个人网站也许就是在人生的脱机存档点。尽管这个文件不能运行。</p>
+<p>事实上，人生又何尝真正有下次呢，我们只能全身心地把这次活的精彩。兜兜转转，最终还是“不念过去、不畏将来”。</p>
+<p>最重要的是，赢了，也是这么办。</p>
+<p>祝大家都能做个好的个人网站。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/xzxthu.github.io/tags/Tutorial/">Tutorial</a>
+                    
+                      <a class="hover-with-bg" href="/xzxthu.github.io/tags/Hexo/">Hexo</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本站所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/xzxthu.github.io/2022/02/17/About%20Us/">
+                        <span class="hidden-mobile">About Us</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/xzxthu.github.io/js/events.js" ></script>
+<script  src="/xzxthu.github.io/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/xzxthu.github.io/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/xzxthu.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/xzxthu.github.io/js/boot.js" ></script>
+
+
+</body>
+</html>
