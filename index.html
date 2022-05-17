@@ -31,9 +31,12 @@
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -42,21 +45,40 @@
 
 <link  rel="stylesheet" href="/xzxthu.github.io/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/xzxthu.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/xzxthu.github.io/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"xzxthu.github.io","root":"/xzxthu.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/Loading_1.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xzxthu.github.io/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xzxthu.github.io","root":"/xzxthu.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/Loading_1.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xzxthu.github.io/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/xzxthu.github.io/js/utils.js" ></script>
   <script  src="/xzxthu.github.io/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/xzxthu.github.io/">
       <strong>Huoshao Art</strong>
@@ -114,6 +136,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -126,29 +149,35 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/xzxthu.github.io/img/banner_home_1.gif') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="火燒火燒火燒火燒火燒">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/xzxthu.github.io/img/banner_home_1.gif') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="火燒火燒火燒火燒火燒"></span>
           
         </div>
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
+        <div id="board"
           >
           
           <div class="container">
@@ -168,12 +197,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/xzxthu.github.io/2022/02/17/About%20Us/" target="_self">
+      <a class="index-excerpt" href="/xzxthu.github.io/2022/02/17/About%20Us/" target="_self">
+        <div>
           
           About Huoshao Art 关于火烧艺术社大家好，这里是火烧艺术社。Hello, we are Huoshao Art Club. 为什么是“火烧”？Why “Huoshao”? 你可以从任何角度理解“火烧”，它放在标题中就已经具有了令我满意的张力。You can interpret “Huoshao” from any angle, by googling it or asking yo
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -182,9 +211,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/xzxthu.github.io/tags/English/">English</a>
+              <a href="/xzxthu.github.io/tags/English/">#English</a>
             
-              <a href="/xzxthu.github.io/tags/Chinese/">Chinese</a>
+              <a href="/xzxthu.github.io/tags/Chinese/">#Chinese</a>
             
           </div>
         
@@ -203,12 +232,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/xzxthu.github.io/2022/03/20/GEIDAIGAME03/" target="_self">
+      <a class="index-excerpt" href="/xzxthu.github.io/2022/03/20/GEIDAIGAME03/" target="_self">
+        <div>
           
           文：许哲欣 展会介绍 Introduction东京艺术大学·大学院映像研究科展来了！ 「GEIDAI GAMES 03 東京藝術大学大学院映像研究科ゲームコース展」開催！ Tokyo University of the Arts(GEIDAI) - Game Exhibition is here! 2022年3月21日(月・祝)〜3月22日(火)Monday, March 21, 2022 - T
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -217,13 +246,13 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/xzxthu.github.io/tags/English/">English</a>
+              <a href="/xzxthu.github.io/tags/English/">#English</a>
             
-              <a href="/xzxthu.github.io/tags/Chinese/">Chinese</a>
+              <a href="/xzxthu.github.io/tags/Game/">#Game</a>
             
-              <a href="/xzxthu.github.io/tags/Game/">Game</a>
+              <a href="/xzxthu.github.io/tags/Chinese/">#Chinese</a>
             
-              <a href="/xzxthu.github.io/tags/Japanese/">Japanese</a>
+              <a href="/xzxthu.github.io/tags/Japanese/">#Japanese</a>
             
           </div>
         
@@ -242,12 +271,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/xzxthu.github.io/2022/03/09/CrossStory/" target="_self">
+      <a class="index-excerpt" href="/xzxthu.github.io/2022/03/09/CrossStory/" target="_self">
+        <div>
           
           Editor: Kyo  一个关于在十字路口Dérive的记录  This is a exercise about Dérive, which I leant from Guy Debord in his article Theory of the Dérive.  Dérive is a means of keeping game designers from wandering into th
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -256,9 +285,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/xzxthu.github.io/tags/English/">English</a>
+              <a href="/xzxthu.github.io/tags/English/">#English</a>
             
-              <a href="/xzxthu.github.io/tags/Game/">Game</a>
+              <a href="/xzxthu.github.io/tags/Game/">#Game</a>
             
           </div>
         
@@ -277,12 +306,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/xzxthu.github.io/2022/02/22/ViewOFView/" target="_self">
+      <a class="index-excerpt" href="/xzxthu.github.io/2022/02/22/ViewOFView/" target="_self">
+        <div>
           
           文&#x2F;动画&#x2F;游戏：许哲欣 ‘它’的视角 View Point of IT    ‘他们’的视角 View Point of THEY     ‘我们’的视角 View Point of US    ‘你’的视角  View Point of YOU
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -291,15 +320,15 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/xzxthu.github.io/tags/English/">English</a>
+              <a href="/xzxthu.github.io/tags/English/">#English</a>
             
-              <a href="/xzxthu.github.io/tags/Chinese/">Chinese</a>
+              <a href="/xzxthu.github.io/tags/Game/">#Game</a>
             
-              <a href="/xzxthu.github.io/tags/Game/">Game</a>
+              <a href="/xzxthu.github.io/tags/Chinese/">#Chinese</a>
             
-              <a href="/xzxthu.github.io/tags/Animation/">Animation</a>
+              <a href="/xzxthu.github.io/tags/Animation/">#Animation</a>
             
-              <a href="/xzxthu.github.io/tags/Research/">Research</a>
+              <a href="/xzxthu.github.io/tags/Research/">#Research</a>
             
           </div>
         
@@ -318,12 +347,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/xzxthu.github.io/2022/02/20/HexoGuide/" target="_self">
+      <a class="index-excerpt" href="/xzxthu.github.io/2022/02/20/HexoGuide/" target="_self">
+        <div>
           
           文： 许哲欣 前言：个人网站是伪需求吗？艺术生或者艺术工作者大多会想要个人网站，用来讲解自己的艺术创作理念、展示作品集、介绍艺术家简历等等。 不过随着社交媒体的发展、流量垄断和信息茧房的产生，个人网站原本的功能性已经被极大地削弱了。 不仅缺少及时性和互动性，而且也缺少引流——个人网站更趋近于链接着“名片”的后台。 加上2020年3月1日开始执行的《网络信息内容生态治理规定》，个人网站已经几乎完全失
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -332,11 +361,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/xzxthu.github.io/tags/Chinese/">Chinese</a>
+              <a href="/xzxthu.github.io/tags/Chinese/">#Chinese</a>
             
-              <a href="/xzxthu.github.io/tags/Tutorial/">Tutorial</a>
+              <a href="/xzxthu.github.io/tags/Tutorial/">#Tutorial</a>
             
-              <a href="/xzxthu.github.io/tags/Hexo/">Hexo</a>
+              <a href="/xzxthu.github.io/tags/Hexo/">#Hexo</a>
             
           </div>
         
@@ -375,32 +404,30 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
   
-
   
-</footer>
+  
+</div>
 
+  </footer>
 
-  <!-- SCRIPTS -->
+  <!-- Scripts -->
   
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
@@ -419,37 +446,18 @@
 <script  src="/xzxthu.github.io/js/events.js" ></script>
 <script  src="/xzxthu.github.io/js/plugins.js" ></script>
 
-<!-- Plugins -->
-
-
-  <script  src="/xzxthu.github.io/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/xzxthu.github.io/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
 
   <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
@@ -459,18 +467,28 @@
 
 
 
+  
+    <script  src="/xzxthu.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/xzxthu.github.io/js/local-search.js" ></script>
 
 
 
 
 
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/xzxthu.github.io/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
