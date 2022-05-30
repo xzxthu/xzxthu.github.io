@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/xzxthu.github.io/img/icon.png">
+  <link rel="icon" href="/xzxthu.github.io/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kyo">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="文：许哲欣程序： Jacob，许哲欣策划： 许哲欣美术： 许哲欣   本文是笔者的游戏开发中对于跳跃动画和动作设计的研究记录  《Nine Lives》 是东京艺术大学 x 南加州大学 USC Games EXPO 2021 联合项目  游戏类型：纵式平台跳跃  操作方法： - 键盘WASD：移动 - 空格：跳跃  　▷ NineLives 在线游戏链接 - itch.io链接 难题刚刚过去的三个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="猫与纵式平台跳跃 NineLives">
+<meta property="og:url" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/index.html">
+<meta property="og:site_name" content="Huoshao Art">
+<meta property="og:description" content="文：许哲欣程序： Jacob，许哲欣策划： 许哲欣美术： 许哲欣   本文是笔者的游戏开发中对于跳跃动画和动作设计的研究记录  《Nine Lives》 是东京艺术大学 x 南加州大学 USC Games EXPO 2021 联合项目  游戏类型：纵式平台跳跃  操作方法： - 键盘WASD：移动 - 空格：跳跃  　▷ NineLives 在线游戏链接 - itch.io链接 难题刚刚过去的三个">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_01.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_02.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_03.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_04.gif">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_05.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_06.gif">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_07.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_08.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_09.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_10.gif">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_11.png">
+<meta property="og:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_12.gif">
+<meta property="article:published_time" content="2021-05-30T02:18:08.000Z">
+<meta property="article:modified_time" content="2022-05-30T03:52:08.737Z">
+<meta property="article:author" content="Kyo">
+<meta property="article:tag" content="Game">
+<meta property="article:tag" content="Chinese">
+<meta property="article:tag" content="Research">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_01.png">
+  
+  
+  <title>猫与纵式平台跳跃 NineLives - Huoshao Art</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/xzxthu.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/xzxthu.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/xzxthu.github.io/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xzxthu.github.io","root":"/xzxthu.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xzxthu.github.io/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/xzxthu.github.io/js/utils.js" ></script>
+  <script  src="/xzxthu.github.io/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 40vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/xzxthu.github.io/">
+      <strong>Huoshao Art</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xzxthu.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xzxthu.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xzxthu.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/xzxthu.github.io/img/banner_page_1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="猫与纵式平台跳跃 NineLives"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-30 11:18" pubdate>
+          May 30, 2021 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">猫与纵式平台跳跃 NineLives</h1>
+            
+            <div class="markdown-body">
+              
+              <p><em>文：许哲欣</em><br><em>程序： Jacob，许哲欣</em><br><em>策划： 许哲欣</em><br><em>美术： 许哲欣</em></p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_01.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<pre><code class="hljs">本文是笔者的游戏开发中对于跳跃动画和动作设计的研究记录
+
+《Nine Lives》 是东京艺术大学 x 南加州大学 USC Games EXPO 2021 联合项目
+
+游戏类型：纵式平台跳跃
+
+操作方法：
+- 键盘WASD：移动
+- 空格：跳跃
+</code></pre>
+<p>　▷ <a target="_blank" rel="noopener" href="https://wearsglasses.itch.io/nine-lives">NineLives 在线游戏链接 - itch.io链接</a></p>
+<h4 id="难题"><a href="#难题" class="headerlink" title="难题"></a>难题</h4><p>刚刚过去的三个月，我和USC的Jacob在东艺大xUSC的合作课程上做了个纵式平台跳跃的游戏</p>
+<p>课程开始的时候，我们问老师：有没有什么主题啊？老师说，就你们想做啥做啥。我们就像在五星级餐厅点餐一样，尽管服务员说：想吃啥点啥，但是我们只能看着餐单懵逼。如果不是Jacob从旁劝阻，我一定就会点餐单上的黄油</p>
+<p>尽管USC的游戏专业享誉全球，但说实话，这门课的体验过程就像边牧看一群哈士奇跳舞</p>
+<p>我是哈士奇</p>
+<p>最后Jacob拿出了《Jump King》，我拿出了《Neco Para》，充分体现了这个合作课程的精髓。于是我们决定做一个猫为主角的高难度纵式平台跳跃游戏</p>
+<p>在最开始的digital prototype的阶段，我就遇到了难题，那就是“猫”和“纵式平台跳跃”完全无法拼接到一起。番茄炒鸡蛋好吃，鸡蛋炒饭也好吃，但是番茄炒鸡蛋炒饭就会觉得怎么样都不对劲</p>
+<p>首先无论是《Jump King》，还是《 I Wanna be》，或者《蔚蓝》，主角都是人类。就连《猫里奥》的猫也是直立运动。从超级马里奥开始，平台跳跃游戏的设计技巧，包括手感打磨、动画设计、游戏机制，都是以“人类”为基础</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_02.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>人类运动和四足动物运动的最大差异就在于，人类只用控制一个重心。当然伽利略在小学课本上就已经证明了，重心与连接方式无关。这里说的“一个重心”，只是站立状态下，双脚控制的重心。人在走、跑、跳、rap等日常行为中，只需要关心双脚之间一个重心点的平衡。因此在角色动作状态控制也只用考虑一个重心点，角色落地等动作，也只用考虑一个着地点</p>
+<p>但是猫这样的四足动物就不一样了</p>
+<p>四足动物的重心控制分为三个部分：前半肢、后半肢和整体平衡。这使得四足动物的动作与人的动作有逻辑上的重大区别，这让我遇到了很多角色控制的问题：</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_03.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<p> <em>四足动物的重心控制：前肢、后肢和整体姿态</em></p>
+<h4 id="跳跃模式问题"><a href="#跳跃模式问题" class="headerlink" title="跳跃模式问题"></a>跳跃模式问题</h4><p>当人做从静止到跳出去（立定跳）时，只用考虑一个“重心-着地”点。无论此次跳跃是成功还是失败，最后落地时，都是同一个动作</p>
+<p>但是猫则不同。对猫而言，立定跳的情况分为：</p>
+<p>①前肢着地-成功？身体前倾：身体后倾</p>
+<p>②前后肢同时着地-成功？身体后倾：身体后倾（也可以转为前倾）</p>
+<p>换句话说，猫在跳出前，会根据目的地的高低远近，调整自己的身体角度（以二维为例）。但是玩家在控制时，显然不能进行这么精细的操作。毕竟我要做的也是不傻猫模拟器</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_04.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<h4 id="前肢落地问题"><a href="#前肢落地问题" class="headerlink" title="前肢落地问题"></a>前肢落地问题</h4><p>对只有一个重心控制的人而言，接触到地面就是落地。对于猫而言，前肢接触到地面也面临多种情况：</p>
+<p>①后肢正常落地</p>
+<p>②后肢无法落到同一地面上，只有手钩到了</p>
+<p>对纵式跳跃游戏，向上的跳跃的重要性也远大于向前跳跃。如果加上前一个跳跃模式的情况，玩家每次操作将面临海量的操作选择。傻猫跳跃游戏分分钟变成硬核游戏</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_05.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<h4 id="凹凸地形问题"><a href="#凹凸地形问题" class="headerlink" title="凹凸地形问题"></a>凹凸地形问题</h4><p>由于在地形设计上想引进凹凸地图的设计，因此需要针对猫的动作做IK。四肢的IK和人的两肢IK不同，但是在二维游戏中可以简单理解为人趴下来，根据前后重心高度调整整体重心高度。但是在具体操作的时候，也出现了问题，那就是猫的前后肢关节数比人多。猫是用脚趾在走路。因此面临着重新写IK逻辑的问题</p>
+<p>此外，地形IK导致的手感问题也需要考虑。我依然没有从怪物猎人世界的“历战王台阶”的阴影中走出</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_06.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<h4 id="下落问题和滞空跳跃"><a href="#下落问题和滞空跳跃" class="headerlink" title="下落问题和滞空跳跃"></a>下落问题和滞空跳跃</h4><p>由于重心控制由前后肢控制，因此有可能猫的重心还在平台上，但猫的前肢已经超出平台——猫得掉下来。另外四肢动物在设计滞空跳跃（Coyote Time）时，也存在判断问题，那就是因为前后肢着地分别判断，所以可能会将指控跳跃的时间拉得很长</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_07.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>虽然遇到的问题很多，但解决方法也是简单的——我放弃了做3D。尽管这个游戏的背景是城市，用3D能做出非常好的演出。不过一共就几个月开发时间，于是就做2D了</p>
+<p>同时，我重新思考了这个“纵向平台”的核心玩法。我将二足的“跳跃”这一元素分成了四足的“起跳”和“落地”两个环节。这种思考方法在普通的跳跃游戏种本来是不需要的，但是让一直着横的猫做纵向跳跃，就像让刘翔跳三级跳、让姚明扔铅球，好像行又好像不行。所以我才不得不重新思考这个我本来觉得很熟悉的玩法</p>
+<p>首先，我简化了猫的所有跳跃姿态控制，将猫所有动作都只以前肢着地结束。这样玩家的操作手感也比较直观，不用考虑整体重心，只用关注前肢是否够到平台就行</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_08.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>并且在关卡的前面，放置几个训练玩家只关注前肢够到的平台。告诉玩家，思考用前肢的跳跃策略是游戏的核心玩法</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_09.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>在只有前肢够到平台而后肢够不到的平台，使用统一的演出</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_10.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>当猫处于平台边缘的时候，让猫蜷缩，提醒玩家猫已经快要掉下去了。并且设置猫从平台边缘下落的延时。虽然不如人类角色直观，但是也能解决问题了</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_11.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>对于IK问题，我也直接躺平了，因为根本没有时间和精力重新写一套IK。于是用了最偷懒的方法——用动画解决。不愧是TA第一性原理：“看起来像就行”</p>
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_12.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+
+<p>对于滞空时间设计，其实到最后也没有太好的解决办法。于是本着极简设计的理念，只保留了一个利用滞空时间的高难平台。这时候我发现高难度游戏真是个讨巧的设计范式。</p>
+<p>总之，花了三个月时间，断断续续地把游戏做完了，新冠的影响下，美国和日本的教学都非常受影响。如果一开始不做这个玩法的话，如果能线下合作的话，怕不是两周就做完了。体量也就是一个prototype的大小，塞进去了所有的想法而已</p>
+<p>希望大家玩的开心！</p>
+<p>　▷ <a target="_blank" rel="noopener" href="https://wearsglasses.itch.io/nine-lives">NineLives 在线游戏链接 - itch.io链接</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/xzxthu.github.io/tags/Game/">#Game</a>
+      
+        <a href="/xzxthu.github.io/tags/Chinese/">#Chinese</a>
+      
+        <a href="/xzxthu.github.io/tags/Research/">#Research</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>猫与纵式平台跳跃 NineLives</div>
+      <div>http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Kyo</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 30, 2021</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/xzxthu.github.io/2021/10/07/MoggyModem/" title="LD49 《解调猫 MoggyModem》 怀念那个用猫上网的年代">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LD49 《解调猫 MoggyModem》 怀念那个用猫上网的年代</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/xzxthu.github.io/2020/04/19/ShunGuai/" title="动画中的“顺拐”动作与表现 「ナンバ歩り」の原理とアニメ表現">
+                        <span class="hidden-mobile">动画中的“顺拐”动作与表现 「ナンバ歩り」の原理とアニメ表現</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/xzxthu.github.io/js/events.js" ></script>
+<script  src="/xzxthu.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/xzxthu.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/xzxthu.github.io/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/xzxthu.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
