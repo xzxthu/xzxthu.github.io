@@ -14,9 +14,9 @@
     
     <tags>
       
-      <tag>Chinese</tag>
-      
       <tag>Game</tag>
+      
+      <tag>Chinese</tag>
       
     </tags>
     
@@ -29,15 +29,15 @@
     <link href="/xzxthu.github.io/2022/04/27/Subarashii/"/>
     <url>/xzxthu.github.io/2022/04/27/Subarashii/</url>
     
-    <content type="html"><![CDATA[<p><em>文：许哲欣</em><br><em>游戏：不可燃E飛,付美君，鱼师傅,许哲欣,李琼宇</em><br><em>技术美术： 许哲欣</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_01.png" class=""><pre><code class="hljs">《斯巴拉西 (うん、この世界は素晴らしい)》是一款音乐节奏动作游戏工作和生活的重压下，一个社畜患上了肠道菌群紊乱的疾病人类的肠道不受大脑控制，往往会有它自己的想法。药物公司研发了一种新型活性药剂，可以有效的维护肠道稳定，让我们的生活变得更”通畅“。主人公是药物中的活性因子，但是他还有另外一重身份需要玩家自己去探究。轻松愉悦的氛围，动感魔性的节奏，放空大脑，跟着节奏探索身体的秘密~难得放松！Take me somewhere NICE!!!本作品屎参加了今年机核的game jam制作了一个节奏动作游戏，游戏包含了4个关卡大约10分钟的简单流程游戏方法：跟随游戏内指示，按方向键“↑，↓，←，→”和空格键“空格”操作</code></pre><p>　▷  <a href="https://mjzoo.itch.io/subarashii">在线游戏链接-itch.io链接</a></p><p>在今年的机核“Booom” Game Jam中，我和几个同学制作了一款音乐节奏游戏《斯巴拉西 (うん、この世界は素晴らしい)》</p><p>我负责了其中的技术美术部分，实现了主角——屎——的表现</p><p>为了配合Game Jam主题「Take Me Somewhere Nice」，游戏策划同学将主角设计成了一颗Q弹的屎，随着音乐的节奏，被玩家拉扯，探索整个世界</p><p>我要做一颗真正自由的屎！</p><h4 id="史莱姆效果"><a href="#史莱姆效果" class="headerlink" title="史莱姆效果"></a>史莱姆效果</h4><p>首先我想到的是，将主角设计成史莱姆的感觉，给屎的边界添加流体效果</p><p>我将先生成空间圆点，并给它加上正弦波</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_02.png" class=""><p>并且，为了让它变得丝滑，我在正弦波上加上了周期性滚动</p><pre><code class="hljs">private void InitialRadius()    &#123;        float x;        float y;        float z = 0f;        float ang = 0f;  // start from 0 degree        for (int i = 0; i &lt; pointsNum; i++)        &#123;            x = Mathf.Sin(Mathf.Deg2Rad * ang) * originRadius;            y = Mathf.Cos(Mathf.Deg2Rad * ang) * originRadius;            originalPos[i] = new Vector3(x, y, z);            afterJellyPos[i] = originalPos[i];            afterCollider[i] = afterJellyPos[i];            ang += (360f / segments);        &#125;    &#125;private void SimulateWave()&#123;    // 正弦周期波动    startAngle += speed;    staticWaveAngle = startAngle;    startRandomWaveAngle += randomWaveSpeed;    randomWaveAngle = startRandomWaveAngle;    // 添加正弦函数波动    for (int i = 0; i &lt; pointsNum; i++)    &#123;        float x = Mathf.Cos(staticWaveAngle) * amplitude;        float y = Mathf.Sin(staticWaveAngle) * amplitude;        float z = 0;        Vector3 wave = new Vector3(x, y, z);        renderPos[i] = afterShrink[i] + wave;        //renderPos[i] = afterShrink[i];        staticWaveAngle += (Mathf.Deg2Rad * 360 / segments * waveSegments);    &#125;&#125;</code></pre><p>不过，这个时候，这个史莱姆效果还是很怪，我们可以看到这个流体效果非常呆板</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Shibarashii_04.gif" class=""><p>因此，我又加了一个正弦函数波动，控制两个正弦函数波动的方向和周期</p><pre><code class="hljs">// 添加随机波动for (int i = 0; i &lt; pointsNum; i++)&#123;    float x = Mathf.Cos(randomWaveAngle) * randomWaveAmp;    float y = Mathf.Sin(randomWaveAngle) * randomWaveAmp;    float z = 0;    Vector3 wave = new Vector3(x, y, z);    renderPos[i] = renderPos[i] + wave;    randomWaveAngle += (Mathf.Deg2Rad * 360 / segments * randomWaveSeg);&#125;</code></pre><p>这个时候，史莱姆的流体效果看起来已经不错了！</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_05.gif" class=""><h4 id="拖拽特效"><a href="#拖拽特效" class="headerlink" title="拖拽特效"></a>拖拽特效</h4><p>流体的拖拽特效如法炮制，在需要拖拽的方向上，增加一个余弦函数</p><p>为了配合音乐和方便情绪调节，我加上了力度、收缩和流体旋转的效果</p><pre><code class="hljs">if(dragDrection != KeyDirectionType.Stop)&#123;    float ang = (360 - transform.localEulerAngles.z) % 360;    float nowRange =  dragPowerfuly ? dragRangePowerful : dragRange;    float angMin = dragAngle - nowRange;    float angMax = dragAngle + nowRange;    for (int i = 0; i &lt; pointsNum; i++)    &#123;        if (ang &gt; angMin &amp;&amp; ang &lt; angMax)        &#123;            float disAngle = Mathf.Deg2Rad * (ang - dragAngle) * 90 / nowRange;            //nowDragDis = Mathf.Max(Mathf.Lerp(nowDragDis, 0, Time.deltaTime / 5), 0);            float x = Mathf.Sin(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * nowDragDis                * Mathf.Pow(Mathf.Cos(disAngle), 4);            float y = Mathf.Cos(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * nowDragDis                * Mathf.Pow(Mathf.Cos(disAngle), 4);            renderPos[i] += new Vector3(x, y, 0);        &#125;        ang = (ang + (360f / segments)) % 360;    &#125;    nowDragDis = Mathf.Max(Mathf.Lerp(nowDragDis, 0, Time.deltaTime * dragSpeed), 0);&#125;</code></pre><p><em>收缩和流体加速效果</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_06.gif" class=""><p><em>小力度拖拽特效</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_07.gif" class=""><p><em>大力度拖拽特效</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_08.gif" class=""><h4 id="墙壁边界"><a href="#墙壁边界" class="headerlink" title="墙壁边界"></a>墙壁边界</h4><p>当主角碰到墙壁边界时，这颗屎也需要有边界收缩效果</p><p>我在计算流程中，给基础的圆添加碰撞的模拟，将碰撞的横竖面上将基础的圆变成平的</p><pre><code class="hljs">private void SimulateColliding()&#123;    float segAngle = 360f / triggers.Length;    float ang = (360 - transform.localEulerAngles.z) % 360;    for (int i = 0; i &lt; pointsNum; i++)    &#123;        bool colliderEnter = false;        for (int t = 0; t &lt; triggers.Length; t++)        &#123;            if(triggers[t].triggerEnter)            &#123;                float nowRange = colliderRange;                float angMin = t * segAngle - nowRange;                float angMax = t * segAngle + nowRange;                if (ang &gt; angMin &amp;&amp; ang &lt; angMax)                &#123;                    float disAngle = Mathf.Deg2Rad * (ang - t * segAngle) * 90 / nowRange;                    float x = Mathf.Sin(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * triggers[t].colliDis * colliderIntense                        * Mathf.Sqrt(Mathf.Cos(disAngle));                    float y = Mathf.Cos(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * triggers[t].colliDis * colliderIntense                        * Mathf.Sqrt(Mathf.Cos(disAngle));                    afterCollider[i] = afterJellyPos[i] - new Vector3(x, y, 0);                    colliderEnter = true;                &#125;            &#125;        &#125;        ang = (ang + (360f / segments)) % 360;    &#125;&#125;</code></pre><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_09.gif" class=""><p>看起来效果已经非常不错了！</p><p>最后给我们的屎加上渲染和脸的动画</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_10.gif" class=""><p>这样可爱的屎，在下面的链接中就能下载并玩到：</p><p>　▷  <a href="https://mjzoo.itch.io/subarashii">斯巴拉西在线游戏链接-itch.io链接</a></p>]]></content>
+    <content type="html"><![CDATA[<p><em>文：许哲欣</em><br><em>游戏：不可燃E飛,付美君，鱼师傅,许哲欣,李琼宇</em><br><em>技术美术： 许哲欣</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_01.png" class=""><pre><code class="hljs">《斯巴拉西 (うん、この世界は素晴らしい)》是一款音乐节奏动作游戏工作和生活的重压下，一个社畜患上了肠道菌群紊乱的疾病人类的肠道不受大脑控制，往往会有它自己的想法。药物公司研发了一种新型活性药剂，可以有效的维护肠道稳定，让我们的生活变得更”通畅“。主人公是药物中的活性因子，但是他还有另外一重身份需要玩家自己去探究。轻松愉悦的氛围，动感魔性的节奏，放空大脑，跟着节奏探索身体的秘密~难得放松！Take me somewhere NICE!!!本作品参加了今年机核的BoooM game jam，游戏包含了4个关卡大约10分钟的简单流程游戏方法：跟随游戏内指示，按方向键“↑，↓，←，→”和空格键“空格”操作</code></pre><p>　▷  <a href="https://mjzoo.itch.io/subarashii">在线游戏链接-itch.io链接</a></p><p>在今年的机核“Booom” Game Jam中，我和几个同学制作了一款音乐节奏游戏《斯巴拉西 (うん、この世界は素晴らしい)》</p><p>我负责了其中的技术美术部分，实现了主角——屎——的表现</p><p>为了配合Game Jam主题「Take Me Somewhere Nice」，游戏策划同学将主角设计成了一颗Q弹的屎，随着音乐的节奏，被玩家拉扯，探索整个世界</p><p>我要做一颗真正自由的屎！</p><h4 id="史莱姆效果"><a href="#史莱姆效果" class="headerlink" title="史莱姆效果"></a>史莱姆效果</h4><p>首先我想到的是，将主角设计成史莱姆的感觉，给屎的边界添加流体效果</p><p>我将先生成空间圆点，并给它加上正弦波</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_02.png" class=""><p>并且，为了让它变得丝滑，我在正弦波上加上了周期性滚动</p><pre><code class="hljs">private void InitialRadius()    &#123;        float x;        float y;        float z = 0f;        float ang = 0f;  // start from 0 degree        for (int i = 0; i &lt; pointsNum; i++)        &#123;            x = Mathf.Sin(Mathf.Deg2Rad * ang) * originRadius;            y = Mathf.Cos(Mathf.Deg2Rad * ang) * originRadius;            originalPos[i] = new Vector3(x, y, z);            afterJellyPos[i] = originalPos[i];            afterCollider[i] = afterJellyPos[i];            ang += (360f / segments);        &#125;    &#125;private void SimulateWave()&#123;    // 正弦周期波动    startAngle += speed;    staticWaveAngle = startAngle;    startRandomWaveAngle += randomWaveSpeed;    randomWaveAngle = startRandomWaveAngle;    // 添加正弦函数波动    for (int i = 0; i &lt; pointsNum; i++)    &#123;        float x = Mathf.Cos(staticWaveAngle) * amplitude;        float y = Mathf.Sin(staticWaveAngle) * amplitude;        float z = 0;        Vector3 wave = new Vector3(x, y, z);        renderPos[i] = afterShrink[i] + wave;        //renderPos[i] = afterShrink[i];        staticWaveAngle += (Mathf.Deg2Rad * 360 / segments * waveSegments);    &#125;&#125;</code></pre><p>不过，这个时候，这个史莱姆效果还是很怪，我们可以看到这个流体效果非常呆板</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Shibarashii_04.gif" class=""><p>因此，我又加了一个正弦函数波动，控制两个正弦函数波动的方向和周期</p><pre><code class="hljs">// 添加随机波动for (int i = 0; i &lt; pointsNum; i++)&#123;    float x = Mathf.Cos(randomWaveAngle) * randomWaveAmp;    float y = Mathf.Sin(randomWaveAngle) * randomWaveAmp;    float z = 0;    Vector3 wave = new Vector3(x, y, z);    renderPos[i] = renderPos[i] + wave;    randomWaveAngle += (Mathf.Deg2Rad * 360 / segments * randomWaveSeg);&#125;</code></pre><p>这个时候，史莱姆的流体效果看起来已经不错了！</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_05.gif" class=""><h4 id="拖拽特效"><a href="#拖拽特效" class="headerlink" title="拖拽特效"></a>拖拽特效</h4><p>流体的拖拽特效如法炮制，在需要拖拽的方向上，增加一个余弦函数</p><p>为了配合音乐和方便情绪调节，我加上了力度、收缩和流体旋转的效果</p><pre><code class="hljs">if(dragDrection != KeyDirectionType.Stop)&#123;    float ang = (360 - transform.localEulerAngles.z) % 360;    float nowRange =  dragPowerfuly ? dragRangePowerful : dragRange;    float angMin = dragAngle - nowRange;    float angMax = dragAngle + nowRange;    for (int i = 0; i &lt; pointsNum; i++)    &#123;        if (ang &gt; angMin &amp;&amp; ang &lt; angMax)        &#123;            float disAngle = Mathf.Deg2Rad * (ang - dragAngle) * 90 / nowRange;            //nowDragDis = Mathf.Max(Mathf.Lerp(nowDragDis, 0, Time.deltaTime / 5), 0);            float x = Mathf.Sin(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * nowDragDis                * Mathf.Pow(Mathf.Cos(disAngle), 4);            float y = Mathf.Cos(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * nowDragDis                * Mathf.Pow(Mathf.Cos(disAngle), 4);            renderPos[i] += new Vector3(x, y, 0);        &#125;        ang = (ang + (360f / segments)) % 360;    &#125;    nowDragDis = Mathf.Max(Mathf.Lerp(nowDragDis, 0, Time.deltaTime * dragSpeed), 0);&#125;</code></pre><p><em>收缩和流体加速效果</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_06.gif" class=""><p><em>小力度拖拽特效</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_07.gif" class=""><p><em>大力度拖拽特效</em></p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_08.gif" class=""><h4 id="墙壁边界"><a href="#墙壁边界" class="headerlink" title="墙壁边界"></a>墙壁边界</h4><p>当主角碰到墙壁边界时，这颗屎也需要有边界收缩效果</p><p>我在计算流程中，给基础的圆添加碰撞的模拟，将碰撞的横竖面上将基础的圆变成平的</p><pre><code class="hljs">private void SimulateColliding()&#123;    float segAngle = 360f / triggers.Length;    float ang = (360 - transform.localEulerAngles.z) % 360;    for (int i = 0; i &lt; pointsNum; i++)    &#123;        bool colliderEnter = false;        for (int t = 0; t &lt; triggers.Length; t++)        &#123;            if(triggers[t].triggerEnter)            &#123;                float nowRange = colliderRange;                float angMin = t * segAngle - nowRange;                float angMax = t * segAngle + nowRange;                if (ang &gt; angMin &amp;&amp; ang &lt; angMax)                &#123;                    float disAngle = Mathf.Deg2Rad * (ang - t * segAngle) * 90 / nowRange;                    float x = Mathf.Sin(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * triggers[t].colliDis * colliderIntense                        * Mathf.Sqrt(Mathf.Cos(disAngle));                    float y = Mathf.Cos(Mathf.Deg2Rad * (ang + transform.localEulerAngles.z)) * triggers[t].colliDis * colliderIntense                        * Mathf.Sqrt(Mathf.Cos(disAngle));                    afterCollider[i] = afterJellyPos[i] - new Vector3(x, y, 0);                    colliderEnter = true;                &#125;            &#125;        &#125;        ang = (ang + (360f / segments)) % 360;    &#125;&#125;</code></pre><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_09.gif" class=""><p>看起来效果已经非常不错了！</p><p>最后给我们的屎加上渲染和脸的动画</p><img src="/xzxthu.github.io/2022/04/27/Subarashii/Subarashii_10.gif" class=""><p>这样可爱的屎，在下面的链接中就能下载并玩到：</p><p>　▷  <a href="https://mjzoo.itch.io/subarashii">斯巴拉西在线游戏链接-itch.io链接</a></p>]]></content>
     
     
     
     <tags>
       
-      <tag>Chinese</tag>
-      
       <tag>Game</tag>
+      
+      <tag>Chinese</tag>
       
       <tag>Tutorial</tag>
       
@@ -58,9 +58,9 @@
     
     <tags>
       
-      <tag>Chinese</tag>
-      
       <tag>Game</tag>
+      
+      <tag>Chinese</tag>
       
     </tags>
     
@@ -79,9 +79,9 @@
     
     <tags>
       
-      <tag>English</tag>
-      
       <tag>Game</tag>
+      
+      <tag>English</tag>
       
     </tags>
     
@@ -100,11 +100,11 @@
     
     <tags>
       
-      <tag>English</tag>
+      <tag>Game</tag>
       
       <tag>Chinese</tag>
       
-      <tag>Game</tag>
+      <tag>English</tag>
       
       <tag>Research</tag>
       
@@ -127,13 +127,13 @@
     
     <tags>
       
-      <tag>English</tag>
+      <tag>Game</tag>
       
       <tag>Chinese</tag>
       
-      <tag>Game</tag>
-      
       <tag>Japanese</tag>
+      
+      <tag>English</tag>
       
     </tags>
     
@@ -152,9 +152,9 @@
     
     <tags>
       
-      <tag>English</tag>
-      
       <tag>Chinese</tag>
+      
+      <tag>English</tag>
       
     </tags>
     
@@ -196,9 +196,9 @@
     
     <tags>
       
-      <tag>Chinese</tag>
-      
       <tag>Game</tag>
+      
+      <tag>Chinese</tag>
       
     </tags>
     
@@ -217,11 +217,11 @@
     
     <tags>
       
-      <tag>English</tag>
+      <tag>Game</tag>
       
       <tag>Chinese</tag>
       
-      <tag>Game</tag>
+      <tag>English</tag>
       
       <tag>Luden Dare</tag>
       
@@ -242,9 +242,9 @@
     
     <tags>
       
-      <tag>Chinese</tag>
-      
       <tag>Game</tag>
+      
+      <tag>Chinese</tag>
       
       <tag>Research</tag>
       
@@ -265,9 +265,9 @@
     
     <tags>
       
-      <tag>Chinese</tag>
-      
       <tag>Game</tag>
+      
+      <tag>Chinese</tag>
       
     </tags>
     

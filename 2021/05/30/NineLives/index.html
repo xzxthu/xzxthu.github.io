@@ -38,8 +38,8 @@
 <meta property="article:published_time" content="2021-05-30T02:18:08.000Z">
 <meta property="article:modified_time" content="2022-05-30T03:52:08.737Z">
 <meta property="article:author" content="Kyo">
-<meta property="article:tag" content="Chinese">
 <meta property="article:tag" content="Game">
+<meta property="article:tag" content="Chinese">
 <meta property="article:tag" content="Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://xzxthu.github.io/xzxthu.github.io/2021/05/30/NineLives/NineLives_01.png">
@@ -83,7 +83,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"xzxthu.github.io","root":"/xzxthu.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xzxthu.github.io/local-search.xml"};
+    var CONFIG = {"hostname":"xzxthu.github.io","root":"/xzxthu.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/Loading_1.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xzxthu.github.io/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -261,7 +261,7 @@
             <div class="markdown-body">
               
               <p><em>文：许哲欣</em><br><em>程序： Jacob，许哲欣</em><br><em>策划： 许哲欣</em><br><em>美术： 许哲欣</em></p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_01.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_01.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <pre><code class="hljs">本文是笔者的游戏开发中对于跳跃动画和动作设计的研究记录
 
@@ -281,49 +281,49 @@
 <p>最后Jacob拿出了《Jump King》，我拿出了《Neco Para》，充分体现了这个合作课程的精髓。于是我们决定做一个猫为主角的高难度纵式平台跳跃游戏</p>
 <p>在最开始的digital prototype的阶段，我就遇到了难题，那就是“猫”和“纵式平台跳跃”完全无法拼接到一起。番茄炒鸡蛋好吃，鸡蛋炒饭也好吃，但是番茄炒鸡蛋炒饭就会觉得怎么样都不对劲</p>
 <p>首先无论是《Jump King》，还是《 I Wanna be》，或者《蔚蓝》，主角都是人类。就连《猫里奥》的猫也是直立运动。从超级马里奥开始，平台跳跃游戏的设计技巧，包括手感打磨、动画设计、游戏机制，都是以“人类”为基础</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_02.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_02.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <p>人类运动和四足动物运动的最大差异就在于，人类只用控制一个重心。当然伽利略在小学课本上就已经证明了，重心与连接方式无关。这里说的“一个重心”，只是站立状态下，双脚控制的重心。人在走、跑、跳、rap等日常行为中，只需要关心双脚之间一个重心点的平衡。因此在角色动作状态控制也只用考虑一个重心点，角色落地等动作，也只用考虑一个着地点</p>
 <p>但是猫这样的四足动物就不一样了</p>
 <p>四足动物的重心控制分为三个部分：前半肢、后半肢和整体平衡。这使得四足动物的动作与人的动作有逻辑上的重大区别，这让我遇到了很多角色控制的问题：</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_03.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_03.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 <p> <em>四足动物的重心控制：前肢、后肢和整体姿态</em></p>
 <h4 id="跳跃模式问题"><a href="#跳跃模式问题" class="headerlink" title="跳跃模式问题"></a>跳跃模式问题</h4><p>当人做从静止到跳出去（立定跳）时，只用考虑一个“重心-着地”点。无论此次跳跃是成功还是失败，最后落地时，都是同一个动作</p>
 <p>但是猫则不同。对猫而言，立定跳的情况分为：</p>
 <p>①前肢着地-成功？身体前倾：身体后倾</p>
 <p>②前后肢同时着地-成功？身体后倾：身体后倾（也可以转为前倾）</p>
 <p>换句话说，猫在跳出前，会根据目的地的高低远近，调整自己的身体角度（以二维为例）。但是玩家在控制时，显然不能进行这么精细的操作。毕竟我要做的也是不傻猫模拟器</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_04.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_04.gif" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <h4 id="前肢落地问题"><a href="#前肢落地问题" class="headerlink" title="前肢落地问题"></a>前肢落地问题</h4><p>对只有一个重心控制的人而言，接触到地面就是落地。对于猫而言，前肢接触到地面也面临多种情况：</p>
 <p>①后肢正常落地</p>
 <p>②后肢无法落到同一地面上，只有手钩到了</p>
 <p>对纵式跳跃游戏，向上的跳跃的重要性也远大于向前跳跃。如果加上前一个跳跃模式的情况，玩家每次操作将面临海量的操作选择。傻猫跳跃游戏分分钟变成硬核游戏</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_05.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_05.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <h4 id="凹凸地形问题"><a href="#凹凸地形问题" class="headerlink" title="凹凸地形问题"></a>凹凸地形问题</h4><p>由于在地形设计上想引进凹凸地图的设计，因此需要针对猫的动作做IK。四肢的IK和人的两肢IK不同，但是在二维游戏中可以简单理解为人趴下来，根据前后重心高度调整整体重心高度。但是在具体操作的时候，也出现了问题，那就是猫的前后肢关节数比人多。猫是用脚趾在走路。因此面临着重新写IK逻辑的问题</p>
 <p>此外，地形IK导致的手感问题也需要考虑。我依然没有从怪物猎人世界的“历战王台阶”的阴影中走出</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_06.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_06.gif" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <h4 id="下落问题和滞空跳跃"><a href="#下落问题和滞空跳跃" class="headerlink" title="下落问题和滞空跳跃"></a>下落问题和滞空跳跃</h4><p>由于重心控制由前后肢控制，因此有可能猫的重心还在平台上，但猫的前肢已经超出平台——猫得掉下来。另外四肢动物在设计滞空跳跃（Coyote Time）时，也存在判断问题，那就是因为前后肢着地分别判断，所以可能会将指控跳跃的时间拉得很长</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_07.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_07.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <p>虽然遇到的问题很多，但解决方法也是简单的——我放弃了做3D。尽管这个游戏的背景是城市，用3D能做出非常好的演出。不过一共就几个月开发时间，于是就做2D了</p>
 <p>同时，我重新思考了这个“纵向平台”的核心玩法。我将二足的“跳跃”这一元素分成了四足的“起跳”和“落地”两个环节。这种思考方法在普通的跳跃游戏种本来是不需要的，但是让一直着横的猫做纵向跳跃，就像让刘翔跳三级跳、让姚明扔铅球，好像行又好像不行。所以我才不得不重新思考这个我本来觉得很熟悉的玩法</p>
 <p>首先，我简化了猫的所有跳跃姿态控制，将猫所有动作都只以前肢着地结束。这样玩家的操作手感也比较直观，不用考虑整体重心，只用关注前肢是否够到平台就行</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_08.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_08.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <p>并且在关卡的前面，放置几个训练玩家只关注前肢够到的平台。告诉玩家，思考用前肢的跳跃策略是游戏的核心玩法</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_09.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_09.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <p>在只有前肢够到平台而后肢够不到的平台，使用统一的演出</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_10.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_10.gif" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <p>当猫处于平台边缘的时候，让猫蜷缩，提醒玩家猫已经快要掉下去了。并且设置猫从平台边缘下落的延时。虽然不如人类角色直观，但是也能解决问题了</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_11.png" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_11.png" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <p>对于IK问题，我也直接躺平了，因为根本没有时间和精力重新写一套IK。于是用了最偷懒的方法——用动画解决。不愧是TA第一性原理：“看起来像就行”</p>
-<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_12.gif" srcset="/xzxthu.github.io/img/loading.gif" lazyload class="">
+<img src="/xzxthu.github.io/2021/05/30/NineLives/NineLives_12.gif" srcset="/xzxthu.github.io/img/Loading_1.gif" lazyload class="">
 
 <p>对于滞空时间设计，其实到最后也没有太好的解决办法。于是本着极简设计的理念，只保留了一个利用滞空时间的高难平台。这时候我发现高难度游戏真是个讨巧的设计范式。</p>
 <p>总之，花了三个月时间，断断续续地把游戏做完了，新冠的影响下，美国和日本的教学都非常受影响。如果一开始不做这个玩法的话，如果能线下合作的话，怕不是两周就做完了。体量也就是一个prototype的大小，塞进去了所有的想法而已</p>
@@ -340,9 +340,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/xzxthu.github.io/tags/Chinese/">#Chinese</a>
-      
         <a href="/xzxthu.github.io/tags/Game/">#Game</a>
+      
+        <a href="/xzxthu.github.io/tags/Chinese/">#Chinese</a>
       
         <a href="/xzxthu.github.io/tags/Research/">#Research</a>
       
